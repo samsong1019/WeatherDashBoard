@@ -3,30 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" /> 
+    <link rel="stylesheet" href="./Assets/style.css" />
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      crossorigin="anonymous"
     />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
     />
-    <link rel="stylesheet" href="./Assets/style.css" />
+   
     <link rel="icon" href="./Assets/Icon.jfif" />
     <title>Weather Dashboard</title>
   </head>
-
-  <body>
-    <header class="container-fluid text-white bg-primary row h-100">
-      <img
-        class="img-fluid max-height:auto w-1 h-1"
-        alt="Logo sm"
-        src="./Assets/Icon.jfif"
-      />
-      <h1 class="float-left row align-items-center ml-2">Weather Dashboard</h1>
-        <input for="city" type="text" id="city" class="">
-    </header>
-  </body>
+    <div class="container-fluid text-white bg-primary vstack gap-3">
+      <h1 id="weatherdash" class="text-center">Weather Dashboard</h1>
+      <input id="select" type="text" class="text-center rounded-pill ">
+    </div>
 </html>
