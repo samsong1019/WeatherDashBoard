@@ -27,7 +27,7 @@
             <h3 class="mt-1">Search For A City:</h3>
             <div class="input-group mb-3">
               <input
-                id="enter-city"
+                id="enterCity"
                 type="text"
                 class="form-control"
                 placeholder="Enter City"
@@ -37,7 +37,7 @@
                 <button
                   class="btn btn-primary"
                   type="button"
-                  id="search-button"
+                  id="searchButton"
                 >
                   <i class="fas fa-search"></i>
                 </button>
@@ -46,7 +46,7 @@
             <button
               class="btn btn-primary mb-3"
               type="button"
-              id="clear-history"
+              id="clearHistory"
             >
               Clear Hisotry
             </button>
@@ -54,15 +54,16 @@
           </div>
         </div>
       </div>
-      <div class="container-fluid">
-        <div class="card float-right" style="width: 80rem">
-          <div class="card-body">
-            <h5 class="card-title">Special title treatment</h5>
-            <p class="card-text">
-              With supporting text below as a natural lead-in to additional
-              content.
-            </p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+      <div class="col-lg-9">
+        <div class="row mr-0">
+          <div class="col-lg-11 card m-3 d-none" id="todaysWeather">
+            <div class="card-body">
+              <h3 id="cityName" class="cityName align-middle"></h3>
+              <img id="weatherPic" alt="weatherPic">
+              <p id="temp"></p>
+              <p id="humidity"></p>
+              <p id="windSpeed"></p>
+            </div>
           </div>
         </div>
       </div>
