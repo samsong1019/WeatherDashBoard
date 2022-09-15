@@ -26,21 +26,23 @@
           <div class="col-lg-3 bg-light">
             <h3 class="mt-1">Search For A City:</h3>
             <div class="input-group mb-3">
-              <input
-                id="enterCity"
-                type="text"
-                class="form-control"
-                placeholder="Enter City"
-                aria-label="Enter City"
-              />
-              <div class="input-group-append">
-                <button
-                  class="btn btn-primary"
-                  type="button"
-                  id="searchButton"
-                >
-                  <i class="fas fa-search"></i>
-                </button>
+              <div class="search">
+                <input
+                  id="enterCity"
+                  type="text"
+                  class="form-control search-bar"
+                  placeholder="Enter City"
+                  aria-label="Enter City"
+                />
+                <div class="input-group-append">
+                  <button
+                    class="btn btn-primary"
+                    type="button"
+                    id="searchButton"
+                  >
+                    <i class="fas fa-search"></i>
+                  </button>
+                </div>
               </div>
             </div>
             <button
@@ -59,8 +61,11 @@
           <div class="col-lg-11 card m-3 d-none" id="todaysWeather">
             <div class="card-body">
               <h3 id="cityName" class="cityName align-middle"></h3>
-              <img id="weatherPic" alt="weatherPic">
+              <img id="icon" alt="icon" src="" />
               <p id="temp"></p>
+              <p id="description"></p>
+              <p id="max"></p>
+              <p id="min"></p>
               <p id="humidity"></p>
               <p id="windSpeed"></p>
             </div>

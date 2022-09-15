@@ -2,27 +2,82 @@ const searchBtn = document.getElementById("searchButton");
 const APIKEY = "519ec4da1131e2d9d1d93ae1745eec7e";
 const cityEl = document.getElementById("enterCity");
 const clearBtn = document.getElementById("clearHistory");
-const weatherPicEl = document.getElementById("weatherPic");
+const weatherIcon = document.getElementById("icon");
 const tempEl = document.getElementById("temp");
 const humidityEl = document.getElementById("humidity");
 const windSpeedEl = document.getElementById("windSpeed");
 const historyEl = document.getElementById("history");
-function city(cityName) {
-fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=5&appid=519ec4da1131e2d9d1d93ae1745eec7e`)
-.then((res)=>{
-    return res.json()
-})
-.then((data)=>{
-    console.log(data);
-})
+const maxTemp = document.getElementById("max");
+const minTemp = document.getElementById("min");
+const descriptionEl = document.getElementById("description");
+const cityNameEl = document.getElementById("cityName");
+const mainContainer = document.getElementById("todaysWeather");
+var date = new Date();
+var currentDate = (date.getMonth()+1) + "/" + date.getDate() + "/" +  date.getFullYear();
+let locate = {
+  fetchLocation: function (city) {
+    fetch(
+      "http://api.openweathermap.org/geo/1.0/direct?q=" +
+        city +
+        "&limit=5&appid=" +
+        APIKEY
+    )
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        console.log(data);
+      });
+  },
+  showLocation: function (data) {},
+};
+
+let weather = {
+  //   fetchweather function with city as parameter
+  fetchWeather: function (city) {
+    fetch(
+      //api link with city and api key
+      "https://api.openweathermap.org/data/2.5/weather?q=" +
+        city +
+        "&units=imperial&appid=" +
+        APIKEY
+    )
+      //get response and get data with this.showweather
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        this.showWeather(data);
+      });
+  },
+  //function to grab specefic items from api name would be city and icon and description is from the weather array so I used 0 to get it from the first object. the temps and humidity is from the main section and the speed is from win section
+  showWeather: function (data) {
+    const { name } = data;
+    const { icon, description } = data.weather[0];
+    const { temp, humidity, temp_max, temp_min } = data.main;
+    const { speed } = data.wind;
+    //setting innerHTML for all items so that it will populate the page so user can see
+    cityNameEl.innerHTML = name + " " + currentDate;
+    weatherIcon.src = "https://openweathermap.org/img/wn/" + icon + ".png";
+    descriptionEl.innerHTML = description;
+    humidityEl.innerHTML = "Humidity: " + humidity + "%";
+    windSpeedEl.innerHTML = "Wind Speed: " + speed + "MPH";
+    tempEl.innerHTML = "Temp: " + temp + "°F";
+    minTemp.innerHTML = "Min Temp: " + temp_min + "°F";
+    maxTemp.innerHTML = "Max Temp: " + temp_max + "°F";
+    //removing class d-none so the information is shown
+    mainContainer.classList.remove("d-none");
+  },
+  //search function to use user input in searchbar and will call fetchweather function
+  search: function () {
+    this.fetchWeather(document.querySelector(".search-bar").value);
+  },
+};
+//add event listner on search button to call function search function inside of weather
+document.querySelector("#searchButton").addEventListener("click", function () {
+  weather.search();
+});
+
+function saveCityNames() {
 
 }
-searchBtn.addEventListener("click", city);
-// function lat
-fetch("https://api.openweathermap.org/data/2.5/weather?lat=34.1206564&lon=-84.0043513&units=imperial&appid=519ec4da1131e2d9d1d93ae1745eec7e")
-.then((res)=>{
-    return res.json()
-})
-.then((data)=>{
-    console.log(data);
-})
