@@ -1,5 +1,7 @@
-const searchBtn = document.getElementById("searchButton");
+//const for api key to make code alittle cleaner and easier to see
 const APIKEY = "519ec4da1131e2d9d1d93ae1745eec7e";
+//const for any html attribute js needs to refer to
+const searchBtn = document.getElementById("searchButton");
 const cityEl = document.getElementById("enterCity");
 const clearBtn = document.getElementById("clearHistory");
 const weatherIcon = document.getElementById("icon");
@@ -12,8 +14,11 @@ const minTemp = document.getElementById("min");
 const descriptionEl = document.getElementById("description");
 const cityNameEl = document.getElementById("cityName");
 const mainContainer = document.getElementById("todaysWeather");
+const pastCity = document.getElementById("pastCity");
+// Date() function to get the current date
 var date = new Date();
-var currentDate = (date.getMonth()+1) + "/" + date.getDate() + "/" +  date.getFullYear();
+var currentDate =
+  date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear();
 let locate = {
   fetchLocation: function (city) {
     fetch(
@@ -77,7 +82,16 @@ let weather = {
 document.querySelector("#searchButton").addEventListener("click", function () {
   weather.search();
 });
-
+// function to save user input into local storage
 function saveCityNames() {
-
+  if (localStorage.getItem("cityName") === null) {
+    var oldHistory = [];
+    oldHistory.push({
+      cityName: cityEl.value,
+    });
+    localStorage.setItem("cityName", JSON.stringify(oldHistory));
+  }
+  var newCity = document.getElementById("")
 }
+// add event listener so everytime user searches for a city city searched will be saved
+searchBtn.addEventListener("click", saveCityNames);
