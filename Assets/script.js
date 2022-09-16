@@ -15,29 +15,11 @@ const descriptionEl = document.getElementById("description");
 const cityNameEl = document.getElementById("cityName");
 const mainContainer = document.getElementById("todaysWeather");
 const pastCity = document.getElementById("pastCity");
-var cityArray = [];
+let cityArray = JSON.parse(localStorage.getItem("city")) || [];
 // Date() function to get the current date
 var date = new Date();
 var currentDate =
   date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear();
-let locate = {
-  fetchLocation: function (city) {
-    fetch(
-      "http://api.openweathermap.org/geo/1.0/direct?q=" +
-        city +
-        "&limit=5&appid=" +
-        APIKEY
-    )
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        console.log(data);
-      });
-  },
-  showLocation: function (data) {},
-};
-
 let weather = {
   //   fetchweather function with city as parameter
   fetchWeather: function (city) {
@@ -84,8 +66,41 @@ document.querySelector("#searchButton").addEventListener("click", function () {
   weather.search();
 });
 // function to save user input into local storage
-
+searchBtn.addEventListener("click", listMaker);
 function listMaker() {
-  var newCity = document.getElementById(".search-bar").value;
+  //get data from input box
+  var newCity = document.getElementById("enterCity").value;
+  //if there is nothing saved at the start then save an empy array
+  if (localStorage.getItem("city") == null) {
+    localStorage.setItem("city", "[]");
+  }
+  var oldCity = JSON.parse(localStorage.getItem("city"));
+  oldCity.push(newCity);
+  //save the old and new data to local storage
+  localStorage.setItem("city", JSON.stringify(oldCity));
+}
+//event listner function to display items
+searchBtn.addEventListener("click", function () {
+  const searchValue = cityEl.value;
+  cityArray.push(searchValue);
+  localStorage.setItem("city", JSON.stringify(cityArray));
+  viewList();
+});
+//function to add to the list and for loop to loop through all integers so that they can create an individual element for each integer in the array
+function viewList() {
+  historyEl.innerHTML = "";
+  if (localStorage.getItem("city") != null) {
+    for (let i = 0; i < cityArray.length; i++) {
+      const item = document.createElement("input");
+      item.setAttribute("type", "text");
+      item.setAttribute("readonly", true);
+      item.setAttribute("class", "form-control d-block bg-white");
+      item.setAttribute("value", cityArray[i]);
+      historyEl.append(item);
+      console.log(item.value);
+    }
+  }
 
 }
+// calling function to keep it persistent
+viewList();
