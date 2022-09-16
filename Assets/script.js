@@ -15,6 +15,7 @@ const descriptionEl = document.getElementById("description");
 const cityNameEl = document.getElementById("cityName");
 const mainContainer = document.getElementById("todaysWeather");
 const pastCity = document.getElementById("pastCity");
+var cityArray = [];
 // Date() function to get the current date
 var date = new Date();
 var currentDate =
@@ -83,15 +84,8 @@ document.querySelector("#searchButton").addEventListener("click", function () {
   weather.search();
 });
 // function to save user input into local storage
-function saveCityNames() {
-  if (localStorage.getItem("cityName") === null) {
-    var oldHistory = [];
-    oldHistory.push({
-      cityName: cityEl.value,
-    });
-    localStorage.setItem("cityName", JSON.stringify(oldHistory));
-  }
-  var newCity = document.getElementById("")
+
+function listMaker() {
+  var newCity = document.getElementById(".search-bar").value;
+
 }
-// add event listener so everytime user searches for a city city searched will be saved
-searchBtn.addEventListener("click", saveCityNames);
