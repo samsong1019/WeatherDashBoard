@@ -60,11 +60,13 @@ let weather = {
   search: function () {
     this.fetchWeather(document.querySelector(".search-bar").value);
   },
+
 };
 //add event listner on search button to call function search function inside of weather
 document.querySelector("#searchButton").addEventListener("click", function () {
   weather.search();
 });
+
 // function to save user input into local storage
 searchBtn.addEventListener("click", listMaker);
 function listMaker() {
@@ -96,11 +98,15 @@ function viewList() {
       item.setAttribute("readonly", true);
       item.setAttribute("class", "form-control d-block bg-white");
       item.setAttribute("value", cityArray[i]);
+      item.setAttribute("id", "itemId")
       historyEl.append(item);
       console.log(item.value);
     }
   }
 
 }
+
+
 // calling function to keep it persistent
 viewList();
+
