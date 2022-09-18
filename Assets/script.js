@@ -59,8 +59,10 @@ let weather = {
   //search function to use user input in searchbar and will call fetchweather function
   search: function () {
     this.fetchWeather(document.querySelector(".search-bar").value);
-  },
-
+  },   
+  clickList: function () {
+        this.fetchWeather(document.querySelector("#itemId").value);
+      }
 };
 //add event listner on search button to call function search function inside of weather
 document.querySelector("#searchButton").addEventListener("click", function () {
@@ -98,15 +100,18 @@ function viewList() {
       item.setAttribute("readonly", true);
       item.setAttribute("class", "form-control d-block bg-white");
       item.setAttribute("value", cityArray[i]);
-      item.setAttribute("id", "itemId")
+      item.setAttribute("id", "itemId");
       historyEl.append(item);
+      // console.log(item.value);
+   
+      document.querySelector("#itemId").addEventListener("click", function () {
+        weather.clickList(item);
+      });
+
       console.log(item.value);
     }
   }
-
 }
-
 
 // calling function to keep it persistent
 viewList();
-
