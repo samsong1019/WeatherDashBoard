@@ -16,3 +16,4 @@ then the users history will be saved to a list<br>
 when the user clicks on a city in the histories list<br> <br>
 then the weather is shown for that city<br>
 I am unable to use that I was told to use because it is no longer free. teacher instruccted me to use another one. I am only able to show current day data and no UV.
+![Screenshot (13)](https://user-images.githubusercontent.com/105885207/190966995-d395b8e6-61ff-408e-970d-fc58be740c02.png)
