@@ -1,5 +1,6 @@
 Weather DashBoard
-https://github.com/samsong1019
+https://github.com/samsong1019<br>
+https://samsong1019.github.io/WeatherDashBoard/
 
 this project was fun and I learned alot and got alot of practice on debugging and I think I got better at it. 
 This project was particularly challenging mainly because local storage is like my weakness haha. after I got the api portion down it wasnt too bad. but the local storage and getting items to apear and being able to click on them took more than half the time of the total project. 
