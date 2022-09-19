@@ -60,9 +60,6 @@ let weather = {
   search: function () {
     this.fetchWeather(document.querySelector(".search-bar").value);
   },   
-  clickList: function () {
-        this.fetchWeather(document.querySelector("#itemId").value);
-      }
 };
 //add event listner on search button to call function search function inside of weather
 document.querySelector("#searchButton").addEventListener("click", function () {
@@ -102,13 +99,10 @@ function viewList() {
       item.setAttribute("value", cityArray[i]);
       item.setAttribute("id", "itemId");
       historyEl.append(item);
-      // console.log(item.value);
-   
-      document.querySelector("#itemId").addEventListener("click", function () {
-        weather.clickList(item);
-      });
-
-      console.log(item.value);
+      const items = localStorage.getItem("city"[i])
+      item.addEventListener("click", function () {
+        weather.fetchWeather(item.value);
+      })
     }
   }
 }
